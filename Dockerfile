@@ -1,7 +1,8 @@
-FROM ubuntu:quantal
-MAINTAINER progrium "progrium@gmail.com"
-
+FROM ubuntu:12.04
+MAINTAINER bakins "brian@akins.org"
+ENV DEBIAN_FRONTEND=noninteractive
+ENV  LC_ALL=C
 RUN mkdir /tmp/build
 ADD ./stack/ /tmp/build
-RUN LC_ALL=C DEBIAN_FRONTEND=noninteractive cd /tmp/build && ./cedar.sh
+RUN cd /tmp/build && ./cedar.sh
 RUN rm -rf /tmp/build

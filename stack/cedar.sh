@@ -5,10 +5,10 @@ set -e
 set -x
 
 cat > /etc/apt/sources.list <<EOF
-deb http://archive.ubuntu.com/ubuntu quantal main
-deb http://archive.ubuntu.com/ubuntu quantal-security main
-deb http://archive.ubuntu.com/ubuntu quantal-updates main
-deb http://archive.ubuntu.com/ubuntu quantal universe
+deb http://archive.ubuntu.com/ubuntu precise main universe
+deb http://archive.ubuntu.com/ubuntu precise-security main
+deb http://archive.ubuntu.com/ubuntu precise-updates main
+deb http://us.archive.ubuntu.com/ubuntu/ precise-backports main restricted universe multiverse
 EOF
 
 apt-get update
@@ -43,15 +43,6 @@ echo -e "\nRemaining suspicious security bits:"
   pruned_find -perm /u+s
   pruned_find -perm /g+s
   pruned_find -perm /+t
-) | sed -u "s/^/  /"
-
-echo -e "\nInstalled versions:"
-(
-  git --version
-  java -version
-  ruby -v
-  gem -v
-  python -V
 ) | sed -u "s/^/  /"
 
 echo -e "\nSuccess!"
